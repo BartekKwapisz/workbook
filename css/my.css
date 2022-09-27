@@ -1,0 +1,61 @@
+#maindiv {
+  min-width: 100%;
+  min-height: 85vh;
+  max-width: 100%;
+  max-height: 85vh; 
+  background-color:  rgba(22,34,57,0.95);
+  top: 80px; 
+}
+
+#topbanner {
+  background-color: #152036; 
+  height: 80px; /*you can later change to vh after changing main-header clearfix to vh also */
+  min-height: 80px;
+  width: 100%;
+  top: 0;
+}
+
+.material-icons {
+  font-size: 16px;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+#customers { 
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+   
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #4b5365; color: white;}
+
+#customers tr:nth-child(odd){background-color: #384155; color: white;}
+
+#customers tr:hover {background-color: #f5a425;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #384155;
+  color: white;
+  border-top: 1px solid #4b5365;
+}
+
+#delete{
+ background-color: rgba(255, 34, 0, 0.817);
+}
+
+#refresh{
+  background-color: rgba(94, 255, 0, 0.817);
+ }
+ 
