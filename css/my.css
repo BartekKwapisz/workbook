@@ -58,4 +58,13 @@
 #refresh{
   background-color: rgba(94, 255, 0, 0.817);
  }
+
+.reloadbtn {
+  width: 100%;
+  background-color: rgba(250,250,250,0.1);
+}
+
+.reloadbtn form {
+  background-color: transparent !important;
+}
  

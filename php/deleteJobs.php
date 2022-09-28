@@ -4,10 +4,10 @@
     $title = $_POST['title']; 
     $salary = $_POST['salary']; 
     $country = $_POST['country']; 
-     
+
 
 $sql="
-INSERT INTO jobs (title, salary, country) VALUES ('$title', '$salary', '$country');";
+DELETE FROM jobs;";
 
 $result = mysqli_query($conn, $sql);
 

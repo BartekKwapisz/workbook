@@ -1,4 +1,6 @@
 <?php include 'header.php' ?>
+ 
+
  <!-- ***** Main Banner Area Start ***** -->
  
         <div id="topbanner">
@@ -6,7 +8,7 @@
         </div>
         <div id="maindiv" class="flex">
         <section class="section coming-soon" data-section="section3">
-                           
+        
                         <form id="contact" action="" method="POST" name="search">
                               <div class="row">
                                 <div class="col-md-12">
@@ -29,52 +31,63 @@
                             <th>Country</th>
                             <th>Salary</th>
                           </tr>
-                              <?php 
-                                        include_once 'php/dbh.inc.php';
-                                        $sql="SELECT * FROM workers;";
-                                        $result = mysqli_query($conn, $sql);
-                                        $queryResults = mysqli_num_rows($result);
-                                        if ($queryResults > 0){
-                                          while ($row=mysqli_fetch_assoc($result)){
-                                            echo "<tr>
-                                                    <td>".$row['title']."</td>
-                                                    <td>".$row['country']."</td>
-                                                    <td>".$row['salary']."</td>
-                                            </tr>";
-                                          }
-                                        }
-                              ?>
-                        </table>
+                              <?php  
+                                        $_SESSION['searchClicked'] = false;
 
-                        <form action="php/delete.inc.php" method="POST" >
-                            <button type="submit" name="submit" id="delete">delete</button>
-                        </form> 
- 
-                        <div style="color:white;"> 
-                                <?php   
-                                      /*unset($_POST["submit-search"]);*/
-                                      if(isset($_POST["submit-search"])){ 
-                                        
+                                        if(isset($_POST["submit-search"])){ 
+                                          $_SESSION['searchClicked'] = true;   
                                           $search = mysqli_real_escape_string($conn, $_POST['search']);
-                                          $sql = "SELECT * FROM workers WHERE title LIKE '%$search%' OR salary LIKE '%$search%' OR country LIKE '%$search%'";
+                                          $sql = "SELECT * FROM jobs WHERE title LIKE '%$search%' OR salary LIKE '%$search%' OR country LIKE '%$search%'";
                                           $result = mysqli_query($conn, $sql);
                                           $queryResults = mysqli_num_rows($result);
                                           if($queryResults > 0) {
                                               while($row = mysqli_fetch_assoc($result)) {
-                                                  echo "<div>
-                                                  <p>".$row['title']." ".$row['salary']." ".$row['country']."</p>
-                                                  </div>";
+                                                  echo "<tr>
+                                                  <td>".$row['title']."</td>
+                                                  <td>".$row['country']."</td>
+                                                  <td>".$row['salary']."</td>
+                                                  </tr>";
                                               }
                                           } else {
-                                              echo "<div><p>there are no results matching your search</div></p>";
-                                              
+                                              echo "<tr><td>there are no </td><td>results matching </td><td>your search criteria</td></tr>";
                                           } 
-                                      }
-                                ?>
-                        </div>
-                       
+                                        }
+                              
+                                        if(!$_SESSION['searchClicked']) {
+                                                  include_once 'php/dbh.inc.php';
+                                                  $sql="SELECT * FROM jobs;";
+                                                  $result = mysqli_query($conn, $sql);
+                                                  $queryResults = mysqli_num_rows($result);
+                                                  if ($queryResults > 0){
+                                                    while ($row=mysqli_fetch_assoc($result)){
+                                                      echo "<tr>
+                                                              <td>".$row['title']."</td>
+                                                              <td>".$row['country']."</td>
+                                                              <td>".$row['salary']."</td>
+                                                      </tr>";
+                                                    }
+                                                  }
+                                        };
+                                         
+                                       
+                              ?>
+                        </table>
+                        <div class="flex reloadbtn">
+                              <form action=" " method="POST" >
+                                  <button type="submit" name="submit" id="refresh">reload</button>
+                              </form> 
+                              <form action="php/deleteJobs.php" method="POST" >
+                                  <button type="submit" name="submit" id="delete">delete</button>
+                              </form> 
+                        </div>                      
+                        <?php
+                          if(isset($_POST["submit-search"])){ 
+                            $_SESSION['searchClicked'] = false;
+                          }
+                         ?>
                     
         </section>
         </div> 
+        
   <!-- ***** Main Banner Area End ***** -->
 <?php include 'footer.php' ?>

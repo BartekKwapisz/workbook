@@ -7,7 +7,7 @@
         <div id="maindiv" class="flex">
         <section class="section coming-soon" data-section="section3">
                            
-                        <form id="contact" action="php/insertJob.php" method="POST">
+                        <form id="contact" action="php/insertWorker.php" method="POST">
                               <div class="row">
                                 <div class="col-md-12">
                                   <fieldset>

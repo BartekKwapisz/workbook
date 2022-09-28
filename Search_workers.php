@@ -72,11 +72,11 @@
                                        
                               ?>
                         </table>
-                        <div class="flex">
+                        <div class="flex reloadbtn">
                               <form action=" " method="POST" >
                                   <button type="submit" name="submit" id="refresh">reload</button>
                               </form> 
-                              <form action="php/delete.inc.php" method="POST" >
+                              <form action="php/deleteWorkers.php" method="POST" >
                                   <button type="submit" name="submit" id="delete">delete</button>
                               </form> 
                         </div>                      
