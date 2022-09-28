@@ -1,5 +1,5 @@
 <?php include 'header.php' ?>
- <!-- ***** Main Banner Area Start ***** -->
+ <!-- **** Main Banner Area Start **** -->
  
         <div id="topbanner">
                
